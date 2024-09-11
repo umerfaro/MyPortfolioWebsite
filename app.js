@@ -19,3 +19,15 @@ hLinks.forEach(link=>{
 moon.addEventListener("click", ()=>{
   body.classList.toggle("dark")
 })
+
+// Resize event to hide the menu on larger screens
+window.addEventListener('resize', () => {
+  // Check if the inner width of the window is larger than a mobile breakpoint, e.g., 768px
+  if (window.innerWidth >= 768) {
+    // If the menu is not already hidden, hide it
+    if (!menu.classList.contains("hidden")) {
+      menu.classList.add("hidden");
+      hamburger.classList.remove("bg-white"); // Reset hamburger icon if needed
+    }
+  }
+});

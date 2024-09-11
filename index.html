@@ -7,8 +7,11 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Tailwind Portfolio</title>
+    <title>Umer Farooq Portfolio</title>
   </head>
   <body class="font-nunito">
     <!-- into section -->
@@ -52,7 +55,7 @@
             class="hidden md:block w-5 cursor-pointer"
             alt=""
           />
-          <div id="hamburger" class="space-y-1 md:hidden cursor-pointer z-20">
+          <div id="hamburger" class="space-y-1 md:hidden cursor-pointer z-10">
             <div class="w-6 h-0.5 bg-indigo-900"></div>
             <div class="w-6 h-0.5 bg-indigo-900"></div>
             <div class="w-6 h-0.5 bg-indigo-900"></div>
@@ -86,7 +89,7 @@
       <!-- intro content -->
       <!-- image -->
       <img
-        class="absolute bottom-0 right-0 lg:left-0 mx-auto h-4/6 object-cover"
+        class="absolute bottom-0 right-0 lg:left-0 mx-auto h-4/6 object-cover image-pop-up"
         src="./img/umer3.png"
         alt=""
       />
@@ -119,7 +122,7 @@
 
 
     <!-- about me section -->
-    <div id="about" class="px-10 dark:bg-slate-900">
+    <div id="about" class="px-10 dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
       <div
         class="container mx-auto py-40 flex flex-col-reverse lg:flex-row items-center gap-20"
       >
@@ -165,7 +168,7 @@
     </div>
 
     <!-- Career Goals -->
-<div id="career-goals" class="py-40 dark:bg-slate-900">
+<div id="career-goals" class="py-40 dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
   <div class="container mx-auto">
     <!-- header -->
     <div class="flex flex-col gap-3 items-center ">
@@ -185,7 +188,7 @@
         <h2 class="text-xl font-bold dark:text-white">Short-Term Goals</h2>
         <p class="text-gray-400 my-3">
           Here are some milestones I'm aiming to achieve in the next few years:
-          <ul class="list-disc ml-5 my-2 ">
+          <ul class="list-disc ml-5 my-2 text-gray-400">
             <li>Complete my Bachelor in Software Engineering.</li>
             <li>Contribute to at least three major open-source projects.</li>
             <li>Develop and launch my own mobile application.</li>
@@ -196,9 +199,9 @@
       <!-- Long-Term Goals -->
       <div class="lg:w-1/2 p-5 my-3 rounded-lg bg-white dark:bg-slate-800 shadow-lg">
         <h2 class="text-xl font-bold dark:text-white">Long-Term Goals</h2>
-        <p class="text-gray-400 my-3">
+        <p class="text-gray-400 my-3 ">
           My vision for the future includes:
-          <ul class="list-disc ml-5 my-2">
+          <ul class="list-disc ml-5 my-2 text-gray-400">
             <li>Becoming a thought leader in the tech industry.</li>
             <li>Starting a tech company focused on AI-driven solutions.</li>
             <li>Influencing positive change through technology in underserved communities.</li>
@@ -218,7 +221,7 @@
 
 
     <!-- services -->
-    <div id="services" class="dark:bg-slate-900">
+    <div id="services" class="dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
       <div class="container mx-auto">
         <!-- top -->
         <!-- <div class="flex flex-col gap-3 items-center"> -->
@@ -314,7 +317,7 @@
       </div>
     </div>
     <!-- works -->
-        <div id="works" class="py-40 dark:bg-slate-900">
+        <div id="works" class="py-40 dark:bg-slate-900"  data-aos="fade-up" data-aos-duration="1000">
           <div class="container mx-auto">
             <!-- top -->
             <div class="flex flex-col gap-3 items-center">
@@ -362,7 +365,7 @@
 
 
     <!-- contact -->
-    <div id="contact" class="dark:bg-slate-900">
+    <div id="contact" class="dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
       <div class="container mx-auto">
         <!-- top -->
         <div class="flex flex-col gap-3 items-center">
@@ -436,7 +439,9 @@
       </div>
     </div>
 
-
+    <script>
+      AOS.init();
+    </script>
     <script src="./app.js"></script>
     <script src="./autotyping.js"></script>
 </body>
