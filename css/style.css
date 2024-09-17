@@ -1085,7 +1085,12 @@ html {
   
 }
 
-
+#circle {
+  perspective: 1000px;
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+  box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.2);
+}
 
 .shadow-lg {
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

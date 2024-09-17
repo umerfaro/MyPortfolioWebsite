@@ -20,6 +20,20 @@ moon.addEventListener("click", ()=>{
   body.classList.toggle("dark")
 })
 
+const circle = document.querySelector("#circle");
+
+document.addEventListener("mousemove", (event) => {
+  const windowWidth = window.innerWidth;
+  const windowHeight = window.innerHeight;
+
+  const rotationX = ((event.clientY / windowHeight) - 0.5) * 30;
+  const rotationY = ((event.clientX / windowWidth) - 0.5) * 30;
+
+  circle.style.transform = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+});
+
+
+
 // Resize event to hide the menu on larger screens
 window.addEventListener('resize', () => {
   // Check if the inner width of the window is larger than a mobile breakpoint, e.g., 768px
