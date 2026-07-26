@@ -1,452 +1,806 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Muhammad Umer Farooq — Full Stack Software Engineer. Flutter, Next.js, AI-powered apps, CI/CD & cloud. Building production-ready mobile and web products."
+    />
+    <title>Muhammad Umer Farooq — Full Stack Software Engineer</title>
+    <link rel="icon" type="image/png" href="./img/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>Umer Farooq Portfolio</title>
+    <link rel="stylesheet" href="./css/main.css" />
   </head>
-  <body class="font-nunito">
-    <!-- into section -->
-    <div
-      class="h-big lg:h-screen bg-gradient-to-t from-indigo-200 dark:from-slate-800 relative overflow-hidden"
-    >
-      <!-- navbar -->
-      <nav class="w-full fixed top-0 bg-white z-10 dark:bg-slate-900">
-        <div class="container mx-auto py-5 flex items-center justify-between">
-            <div class="flex items-center gap-2 cursor-pointer">
-                <img class= 'w-32  h-auto flex-shrink-0' src="./img/newlogo.svg" alt="" />
-                
-        
-              </div>
-          <ul
-            class="hidden md:flex    space-x-10 text-gray-600 dark:text-gray-100 font-bold text-sm uppercase"
-          >
-            <li class="hover:text-gray-500">
-              <a href="#">homepage</a>
-            </li>
-            <li class="hover:text-gray-500">
-              <a href="#about">about me</a>
-            </li>
-            <li class="hover:text-gray-500" >
-              <a href="#career-goals">career goals</a>
-            </li>
+  <body>
+    <!-- svg icon sprite -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+      <symbol id="i-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+      <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+      <symbol id="i-pipeline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+      <symbol id="i-db" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="6 3 20 12 6 21 6 3"/></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.69 1.25 3.35.95.1-.75.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.18.92-.26 1.9-.38 2.88-.39.98 0 1.96.13 2.88.39 2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.76.11 3.05.73.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.35.77 1.05.77 2.12 0 1.53-.01 2.76-.01 3.14 0 .31.21.67.8.56C20.71 21.39 24 17.08 24 12 24 5.65 18.85.5 12 .5z"/></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+      <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V8h4v1"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+      <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+    </svg>
 
-            <li class="hover:text-gray-500">
-              <a href="#services">services</a>
-            </li>
-            <li class="hover:text-gray-500">
-              <a href="#works">works</a>
-            </li>
-            <li class="hover:text-gray-500">
-              <a href="#contact">contact</a>
-            </li>
-          </ul>
-         
-          <input type="checkbox" id="menu-toggle" class="hidden" />
-          <label for="menu-toggle" class="md:hidden cursor-pointer z-10">
-            <div class="space-y-1">
-              <div class="w-6 h-0.5 bg-indigo-900"></div>
-              <div class="w-6 h-0.5 bg-indigo-900"></div>
-              <div class="w-6 h-0.5 bg-indigo-900"></div>
-            </div>
-          </label>
-  
+    <!-- animated background -->
+    <canvas id="bg-canvas"></canvas>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-
-          <ul
-            id="menu"
-            class=" bg-indigo-900 absolute left-0 top-0 w-full p-10 rounded-b-3xl space-y-10 text-white text-center"
-          >
-            <li>
-              <a class="mobile-nav-link" href="#">homepage</a>
-            </li>
-            <li>
-              <a class="mobile-nav-link" href="#about">about me</a>
-            </li>
-            <li>
-              <a class="mobile-nav-link" href="#career-goals">career goals</a>
-            </li>
-            <li>
-              <a class="mobile-nav-link" href="#services">services</a>
-            </li>
-            <li>
-              <a class="mobile-nav-link" href="#works">works</a>
-            </li>
-            <li>
-              <a class="mobile-nav-link" href="#contact">contact</a>
-            </li>
-            
-          </ul>
-        </div>
-      </nav>
-      <!-- intro content -->
-      <!-- image -->
-      <img
-        class="absolute bottom-0 right-0 lg:left-0 mx-auto h-4/6 object-cover image-pop-up"
-        src="./img/umer3.png"
-        alt=""
-      />
-      <!-- circle -->
-      <div
-      id="circle"
-        class="hidden lg:block absolute -bottom-1/4 right-0 left-0 mx-auto w-big h-big bg-indigo-900 rounded-full -z-10"
-      ></div>
-      <!-- animated text -->
-      <div
-        class="absolute top-1/3 left-5 text-xl sm:left-10 sm:text-4xl md:left-1/4 md:text-6xl lg:left-5 xl:left-48 xl:text-7xl font-bold"
-      >
-        <span class="text-gray-600">Flutter</span>
-        <p id="text" class=" text-red-500"></p>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar" id="navbar">
+      <div class="container">
+        <a href="#home" class="brand">
+          <span class="brand-mark">UF</span>
+          <span>Umer<span class="accent">Farooq</span></span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#credentials">Credentials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a
+          class="nav-cta"
+          href="https://drive.google.com/file/d/19pUAKNDvdsERY888HxHuca8M_xrr9dhA/view?usp=sharing"
+          target="_blank"
+          rel="noopener"
+          >Download CV</a
+        >
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <!-- texts -->
-      <div
-        class="hidden lg:flex flex-col gap-5 rounded-md shadow-lg absolute top-0 bottom-0 m-auto right-10 bg-white dark:bg-slate-900 dark:shadow-slate-800 p-6 h-fit w-1/3"
-      >
-      <h1 class="text-4xl font-bold text-indigo-900">Hi, I'm Muhammad Umer Farooq</h1>
-        <p class="text-gray-400">
-            I am a final-year student at  <a class="underline"  href="http://isb.nu.edu.pk">FAST National University</a> with two years of experience in building Android and iOS mobile apps and web applications using Flutter. Currently, I am also expanding my skills by learning AI and machine learning. My academic journey has equipped me with a strong foundation in both frontend and backend development, and I am excited to apply my skills to real-world projects and contribute to the tech community.
-        </p>
-        <div class="flex gap-3">
-          <a class="bg-indigo-600 text-white text-xl px-3 py-2 rounded-md font-semibold w-fit" href="https://drive.google.com/file/d/19pUAKNDvdsERY888HxHuca8M_xrr9dhA/view?usp=sharing">Download CV</a>
-        </div>
-      </div>
+    </nav>
+
+    <!-- mobile menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#services">Services</a>
+      <a href="#projects">Projects</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
     </div>
 
-
-    <!-- about me section -->
-    <div id="about" class="px-10 dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
-      <div
-        class="container mx-auto py-40 flex flex-col-reverse lg:flex-row items-center gap-20"
-      >
-        <!-- left -->
-        <div class="relative">
-          <img
-            class="h-1/4 absolute top-0 left-0 -z-10"
-            src="./img/dots.png"
-            alt=""
-          />
-          <div class="h-full rounded-full overflow-hidden">
-            <img src="./img/Umer2.png" alt="" />
-          </div>
-        </div>
-        <!-- right -->
-        <div class="my-auto flex flex-col gap-3">
-          <h1 class="text-indigo-600 font-bold">ABOUT ME</h1>
-          <h1 class="text-3xl font-medium dark:text-white">Better Code</h1>
-          <h1 class="text-3xl font-medium dark:text-white">
-            Better Software
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-copy">
+          <span class="hero-badge"><span class="dot"></span> Available for new opportunities</span>
+          <h1>
+            Hi, I'm Muhammad<br />
+            <span class="accent">Umer Farooq</span>
           </h1>
-          <p class="text-gray-400 text-justify">
-            I am a Junior Software Engineer with strong skills in Flutter development, and I have experience in building advanced mobile apps. I'm good with different programming languages and tools like AWS and CI/CD. I work hard to create software that improves how people interact with digital platforms. I love to keep learning and using my problem-solving abilities to help develop new and creative software solutions.
+          <div class="typing-line">
+            <span id="typed"></span><span class="cursor"></span>
+          </div>
+          <p class="hero-desc">
+            I build production-ready mobile apps and modern web platforms — from
+            AI-powered products live on the Play Store to enterprise helpdesk and
+            automation systems. Flutter, Next.js, REST APIs, Firebase, and
+            cloud-native CI/CD are my daily tools.
           </p>
-          <h2 class="text-gray-400 font-medium">Flutter</h2>
-          <div class="w-full bg-gray-200 h-1.5 rounded-md">
-            <div class="w-full bg-indigo-600 h-1.5 rounded-md"></div>
-          </div>
-          <h2 class="text-gray-400 font-medium">Dart</h2>
-          <div class="w-full bg-gray-200 h-1.5 rounded-md">
-            <div class="w-5/6 bg-indigo-600 h-1.5 rounded-md"></div>
-          </div>
-          <h2 class="text-gray-400 font-medium">Firebase</h2>
-          <div class="w-full bg-gray-200 h-1.5 rounded-md">
-            <div class="w-4/6 bg-indigo-600 h-1.5 rounded-md"></div>
-          </div>
-          <h2 class="text-gray-400 font-medium">Docker</h2>
-          <div class="w-full bg-gray-200 h-1.5 rounded-md">
-            <div class="w-5/6 bg-indigo-600 h-1.5 rounded-md"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Career Goals -->
-<div id="career-goals" class="py-40 dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
-  <div class="container mx-auto">
-    <!-- header -->
-    <div class="flex flex-col gap-3 items-center ">
-      <h1 class="text-indigo-600 font-bold">CAREER GOALS</h1>
-      <h1 class="text-3xl dark:text-white">Where I'm Headed</h1>
-      <p class="w-1/2 text-center text-gray-400">
-        A snapshot of my professional objectives and the path I am charting to achieve them.
-      </p>
-    
-    </div>
-
-    <!-- content -->
-    <div class="mt-5 p-8 flex flex-col lg:flex-row justify-between gap-10">
-      
-      <!-- Short-Term Goals -->
-      <div class=" lg:w-1/2 p-5 my-3 rounded-lg bg-white dark:bg-slate-800 shadow-lg ">
-        <h2 class="text-xl font-bold dark:text-white">Short-Term Goals</h2>
-        <p class="text-gray-400 my-3">
-          Here are some milestones I'm aiming to achieve in the next few years:
-          <ul class="list-disc ml-5 my-2 text-gray-400">
-            <li>Complete my Bachelor in Software Engineering.</li>
-            <li>Contribute to at least three major open-source projects.</li>
-            <li>Develop and launch my own mobile application.</li>
-          </ul>
-        </p>
-      </div>
-      
-      <!-- Long-Term Goals -->
-      <div class="lg:w-1/2 p-5 my-3 rounded-lg bg-white dark:bg-slate-800 shadow-lg">
-        <h2 class="text-xl font-bold dark:text-white">Long-Term Goals</h2>
-        <p class="text-gray-400 my-3 ">
-          My vision for the future includes:
-          <ul class="list-disc ml-5 my-2 text-gray-400">
-            <li>Becoming a thought leader in the tech industry.</li>
-            <li>Starting a tech company focused on AI-driven solutions.</li>
-            <li>Influencing positive change through technology in underserved communities.</li>
-          </ul>
-        </p>
-      </div>
-    </div>
-    <!-- Call to Action -->
-    <div class="text-center py-10">
-      <p class="text-xl dark:text-white">
-        "The future belongs to those who believe in the beauty of their dreams." - Eleanor Roosevelt
-      </p>
-    </div>
-  </div>
-</div>
-
-
-
-    <!-- services -->
-    <div id="services" class="dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
-      <div class="container mx-auto">
-        <!-- top -->
-        <!-- <div class="flex flex-col gap-3 items-center"> -->
-          <div class="lg:w-1/2 p-5 px-5 py-3 flex flex-col items-center rounded-lg bg-white dark:bg-slate-800 shadow-lg">
-            <h1 class="text-indigo-600 font-bold text-center">SERVICES</h1>
-            <h1 class="text-3xl dark:text-white text-center">What do I offer?</h1>
-            <p class="w-full md:w-1/2 text-justify text-gray-400">
-                My approach to mobile app development is to create Flutter apps that strengthen your company’s brand while ensuring ease of use and simplicity for your users. I focus on designing intuitive and streamlined apps that enhance user experience on mobile devices.
-            </p>
-        </div>
-        
-        <!-- bottom -->
-        <div class="p-5 sm:p-0 flex flex-wrap justify-between">
-          <!-- card -->
-          <div
-            class="w-full md:w-4/12 shadow-xl rounded-lg p-5 my-3 md:my-10 flex flex-col gap-3"
-          >
-            <img class="w-10" src="./img/smartphone.png" alt="" />
-            <h1 class="font-medium text-lg dark:text-white">Mobile Development</h1>
-            <p class="text-gray-400">
-              Build innovative mobile apps for iOS and Android platforms.
-            </p>
-            <a class="text-indigo-600 font-semibold text-sm" href=""
-              >Read More</a
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              View Projects
+              <svg class="icon"><use href="#i-arrow-right" /></svg>
+            </a>
+            <a
+              href="https://drive.google.com/file/d/19pUAKNDvdsERY888HxHuca8M_xrr9dhA/view?usp=sharing"
+              target="_blank"
+              rel="noopener"
+              class="btn btn-ghost"
             >
+              <svg class="icon"><use href="#i-download" /></svg>
+              Download CV
+            </a>
           </div>
-          <!-- card -->
-          <div
-            class="w-full md:w-4/12 shadow-xl rounded-lg p-5 my-3 md:my-10 flex flex-col gap-3"
-          >
-            <img class="w-10" src="./img/ux.png" alt="" />
-            <h1 class="font-medium text-lg dark:text-white">Web Development</h1>
-            <p class="text-gray-400">
-              Craft visually appealing and highly functional websites for various purposes.
-            </p>
-            <a class="text-indigo-600 font-semibold text-sm" href=""
-              >Read More</a
-            >
-          </div>
-          <!-- card -->
-          <div
-            class="w-full md:w-4/12 shadow-xl rounded-lg p-5 my-3 md:my-10 flex flex-col gap-3"
-          >
-            <img class="w-10" src="./img/devops.png" alt="" />
-            <h1 class="font-medium text-lg dark:text-white">DevOps</h1>
-            <p class="text-gray-400">
-              Streamline development processes and enhance collaboration.
-            </p>
-            <a class="text-indigo-600 font-semibold text-sm" href=""
-              >Read More</a
-            >
-          </div>
-          <!-- card -->
-          <div
-            class="w-full md:w-4/12 shadow-xl rounded-lg p-5 my-3 md:my-10 flex flex-col gap-3"
-          >
-            <img class="w-10" src="./img/test.png" alt="" />
-            <h1 class="font-medium text-lg dark:text-white">Testing</h1>
-            <p class="text-gray-400">
-              Ensure software quality and reliability through rigorous testing.
-            </p>
-            <a class="text-indigo-600 font-semibold text-sm" href=""
-              >Read More</a
-            >
-          </div>
-          <!-- card -->
-          <div
-            class="w-full md:w-4/12 shadow-xl rounded-lg p-5 my-3 md:my-10 flex flex-col gap-3"
-          >
-            <img class="w-10" src="./img/software-development.png" alt="" />
-            <h1 class="font-medium text-lg dark:text-white">Software Engineering</h1>
-            <p class="text-gray-400">
-              Design scalable and robust software solutions to meet business needs.
-            </p>
-            <a class="text-indigo-600 font-semibold text-sm" href=""
-              >Read More</a
-            >
-          </div>
-          <!-- card -->
-          <div
-            class="w-full md:w-4/12 shadow-xl rounded-lg p-5 my-3 md:my-10 flex flex-col gap-3"
-          >
-            <img class="w-10" src="./img/pos.png" alt="" />
-            <h1 class="font-medium text-lg dark:text-white">Pos Solution</h1>
-            <p class="text-gray-400">
-              Design scalable and robust POS solutions to meet business needs.
-            </p>
-            <a class="text-indigo-600 font-semibold text-sm" href=""
-              >Read More</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- works -->
-        <div id="works" class="py-40 dark:bg-slate-900"  data-aos="fade-up" data-aos-duration="1000">
-          <div class="container mx-auto">
-            <!-- top -->
-            <div class="flex flex-col gap-3 items-center">
-              <h1 class="text-indigo-600 font-bold">PORTFOLIO</h1>
-              <h1 class="text-3xl dark:text-white">I like building things</h1>
-              <p class="w-1/2 text-center text-gray-400">
-                I've worked on a variety of projects. Here are a few of my favorites.
-              </p>
+          <div class="hero-stats">
+            <div class="stat">
+              <h3>3+</h3>
+              <p>Years Experience</p>
             </div>
-          
-          <!-- bottom -->
-    <div class="p-5 sm:p-0 flex flex-wrap justify-between">
-      <!-- card -->
-      <div class="w-full md:w-5/12 lg:w-1/5 shadow-xl rounded-lg my-3 md:my-10 m-1 transition-all hover:scale-110">
-        <a href="https://github.com/umerfaro/ECommeranceAPP" class="block hover:underline">
-          <img src="./img/ecom.png" alt="Item Description" class="imageheight">
-          <p class="text-center p-2  text-gray-400">Multi Vendor E-commerce System</p>
-        </a>
-      </div>
-      <!-- card -->
-      <div class="w-full md:w-5/12 lg:w-1/5 shadow-xl rounded-lg my-3 md:my-10 m-1 transition-all hover:scale-110">
-        <a href="https://ominidubed.web.app/#/login-view" class="block hover:underline">
-          <img  class="imageheight" src="./img/appstore.png" alt="Item Description" >
-
-          <p class="text-center p-2  text-gray-400 ">Messanger App With Ai language Tanslator</p>
-        </a>
-      </div>
-      <div class="w-full md:w-5/12 lg:w-1/5 shadow-xl rounded-lg my-3 md:my-10 m-1 transition-all hover:scale-110">
-        <a href="https://github.com/umerfaro/Flutter_Covid-19-Tracker-APP" class="block hover:underline" class="w-full h-auto object-cover">
-          <img src="./img/covid.png" alt="Item Description" class="imageheight" >
-          <p class="text-center p-2  text-gray-400 ">COVID-19 tracker app</p>
-        </a>
-      </div>
-      <div class="w-full md:w-5/12 lg:w-1/5 shadow-xl rounded-lg my-3 md:my-10 m-1 transition-all hover:scale-110">
-        <a href="https://example.com" class="block hover:underline">
-          <img src="./img/playstore.png"  alt="Item Description" class="w-full h-auto object-cover">
-          <p class="text-center p-2  text-gray-400 ">Monolog a quote App with Css Modifications</p>
-        </a>
-      </div>
-      
-    
-    </div>
-  </div>
-</div>
-
-
-    <!-- contact -->
-    <div id="contact" class="dark:bg-slate-900" data-aos="fade-up" data-aos-duration="1000">
-      <div class="container mx-auto">
-        <!-- top -->
-        <div class="flex flex-col gap-3 items-center">
-          <h1 class="text-indigo-600 font-bold">CONTACT</h1>
-          <h1 class="text-3xl dark:text-white">Have a Question?</h1>
-          <p class="w-1/2 text-center text-gray-400">
-            Do you have an idea? Let's discuss it and see what we can do
-            together.
-          </p>
+            <div class="stat">
+              <h3>3</h3>
+              <p>Apps on Play Store</p>
+            </div>
+            <div class="stat">
+              <h3>15+</h3>
+              <p>Projects Delivered</p>
+            </div>
+            <div class="stat">
+              <h3>100+</h3>
+              <p>Students Mentored</p>
+            </div>
+          </div>
         </div>
-        <!-- bottom -->
-        <form class="mt-5 p-8 flex flex-col gap-5 items-center"
-        action="https://formspree.io/f/mdknvnvz"
-        method="POST"
-        >
-          <input
-            class="p-2 w-full md:w-1/2 ring-1 ring-indigo-300 rounded-sm dark:bg-slate-800 dark:ring-0 dark:text-white"
-            type="text"
-            name="name"
-            placeholder="Name Surname"
-            required
-          />
-          <input
-            class="p-2 w-full md:w-1/2 ring-1 ring-indigo-300 rounded-sm dark:bg-slate-800 dark:ring-0 dark:text-white"
-            type="email"
-            name="name"
-            placeholder="Email"
-            required
-          />
-          <textarea
-            class="p-2 w-full md:w-1/2 ring-1 ring-indigo-300 rounded-sm dark:bg-slate-800 dark:ring-0 dark:text-white"
-            cols="30"
-            rows="10"
-            name="name"
-            placeholder="Message..."
-            required
-          ></textarea>
-          <button
-            class="w-1/2 bg-indigo-600 text-white font-medium px-3 py-2 rounded-md cursor-pointer"
+
+        <div class="hero-visual">
+          <div class="portrait-card" id="portrait">
+            <!-- To use your new studio headshot: save it as img/portrait.png and change this src back -->
+            <img src="./img/umer3.png" alt="Muhammad Umer Farooq" />
+            <div class="float-chip chip-1">
+              <svg class="icon"><use href="#i-mobile" /></svg> Flutter Expert
+            </div>
+            <div class="float-chip chip-2">
+              <svg class="icon"><use href="#i-sparkle" /></svg> AI-Powered Apps
+            </div>
+            <div class="float-chip chip-3">
+              <svg class="icon"><use href="#i-pipeline" /></svg> CI/CD &amp; DevOps
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">About Me</span>
+          <h2>Better code, <span class="accent">better software</span></h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-photo reveal">
+            <div class="frame">
+              <img src="./img/umer3.png" alt="Muhammad Umer Farooq" />
+            </div>
+          </div>
+
+          <div class="about-copy reveal" data-delay="1">
+            <h3>Full Stack Software Engineer — Mobile, Web &amp; Cloud</h3>
+            <p>
+              I'm a Full Stack Software Engineer with hands-on experience in mobile
+              app development, modern web applications, backend integrations,
+              databases, CI/CD automation, and cloud-based systems. Currently a
+              Junior Software Engineer at <strong>CareCloud</strong>, I've shipped
+              AI-powered products to the Play Store, built enterprise platforms,
+              and mentored 100+ students in DevOps workflows. I care deeply about
+              clean architecture, maintainable code, and products people love to use.
+            </p>
+
+            <ul class="about-facts">
+              <li><strong>Education</strong> BS Software Engineering, FAST NUCES</li>
+              <li><strong>Location</strong> Islamabad, Pakistan</li>
+              <li><strong>Email</strong> Muhammadufarooq.dev@gmail.com</li>
+              <li><strong>Freelance</strong> Level 1 Seller on Fiverr</li>
+            </ul>
+
+            <div id="skills-wrap">
+              <div class="skill">
+                <div class="skill-top"><span>Flutter &amp; Dart</span><span>95%</span></div>
+                <div class="track"><div class="fill" data-level="95"></div></div>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>Next.js / React &amp; TypeScript</span><span>85%</span></div>
+                <div class="track"><div class="fill" data-level="85"></div></div>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>Node.js, REST APIs &amp; Firebase</span><span>88%</span></div>
+                <div class="track"><div class="fill" data-level="88"></div></div>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>DevOps — Docker, GitHub Actions, Fastlane</span><span>82%</span></div>
+                <div class="track"><div class="fill" data-level="82"></div></div>
+              </div>
+              <div class="skill">
+                <div class="skill-top"><span>Databases — MongoDB, PostgreSQL, SQL Server</span><span>80%</span></div>
+                <div class="track"><div class="fill" data-level="80"></div></div>
+              </div>
+            </div>
+
+            <div class="tech-cloud">
+              <span>Flutter</span><span>Dart</span><span>Next.js</span><span>React</span>
+              <span>TypeScript</span><span>Node.js</span><span>Firebase</span>
+              <span>MongoDB</span><span>PostgreSQL</span><span>Docker</span>
+              <span>Kubernetes</span><span>GitHub Actions</span><span>Fastlane</span>
+              <span>AWS</span><span>Bloc</span><span>Riverpod</span><span>Tailwind CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPERIENCE ===================== -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Career Path</span>
+          <h2>Work <span class="accent">experience</span></h2>
+          <p>From internships to production engineering — the journey so far.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <div class="tl-card">
+              <div class="tl-meta">
+                <h3>Junior Software Engineer</h3>
+                <span class="where">CareCloud</span>
+                <span class="when">Jun 2025 — Mar 2026</span>
+              </div>
+              <ul>
+                <li>Developed and maintained mobile and web systems with Flutter, REST APIs, and database-driven workflows.</li>
+                <li>Built school management and employee portal apps automating admissions, scheduling, and daily operations.</li>
+                <li>Integrated authentication flows, real-time updates, push notifications, and role-based features.</li>
+                <li>Automated iOS &amp; Android release pipelines with Fastlane and GitHub Actions.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item reveal" data-delay="1">
+            <div class="tl-card">
+              <div class="tl-meta">
+                <h3>Lab Demonstrator — Software Construction &amp; Development</h3>
+                <span class="where">FAST-NUCES</span>
+                <span class="when">Feb 2025 — May 2025</span>
+              </div>
+              <ul>
+                <li>Led hands-on DevOps labs covering Docker, Minikube, Kubernetes basics, and GitHub Actions.</li>
+                <li>Conducted 16+ practical CI/CD sessions on containerization and deployment pipelines for 100+ students.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item reveal" data-delay="2">
+            <div class="tl-card">
+              <div class="tl-meta">
+                <h3>Flutter Intern</h3>
+                <span class="where">Grayhat</span>
+                <span class="when">Jun 2024 — Aug 2024</span>
+              </div>
+              <ul>
+                <li>Built a real-time messaging app with Flutter and Firebase featuring AI-powered voice dubbing.</li>
+                <li>Integrated Firebase services, REST APIs, authentication, and AI features with improved performance.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tl-item reveal" data-delay="3">
+            <div class="tl-card">
+              <div class="tl-meta">
+                <h3>Level 1 Freelancer</h3>
+                <span class="where">Fiverr</span>
+                <span class="when">Jul 2022 — Aug 2025</span>
+              </div>
+              <ul>
+                <li>Delivered Flutter apps, web dashboards, and automation workflows across e-commerce and business domains.</li>
+                <li>Produced BPMN models, ERDs, UML diagrams, and API documentation for client projects.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Services</span>
+          <h2>What I <span class="accent">offer</span></h2>
+          <p>End-to-end product engineering — from the first wireframe to automated store releases.</p>
+        </div>
+
+        <div class="services-grid reveal">
+          <div class="service-card">
+            <div class="icon-wrap"><svg class="icon"><use href="#i-mobile" /></svg></div>
+            <h3>Mobile App Development</h3>
+            <p>
+              Cross-platform iOS &amp; Android apps with Flutter — Bloc/Riverpod state
+              management, offline storage, push notifications, and Play Store launches.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="icon-wrap"><svg class="icon"><use href="#i-monitor" /></svg></div>
+            <h3>Web Development</h3>
+            <p>
+              Modern web platforms with Next.js, React, and Tailwind — dashboards,
+              landing pages, authentication flows, and responsive UI.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="icon-wrap"><svg class="icon"><use href="#i-server" /></svg></div>
+            <h3>Backend &amp; API Engineering</h3>
+            <p>
+              Node.js/Express services, REST APIs, Firebase Functions, secure
+              authentication, and role-based workflows built on clean architecture.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="icon-wrap"><svg class="icon"><use href="#i-pipeline" /></svg></div>
+            <h3>DevOps &amp; CI/CD</h3>
+            <p>
+              Automated pipelines with GitHub Actions, Docker, and Fastlane — from
+              commit to store release with zero manual deployment pain.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="icon-wrap"><svg class="icon"><use href="#i-sparkle" /></svg></div>
+            <h3>AI-Powered Features</h3>
+            <p>
+              AI chat assistants, voice input, smart categorization, and automation —
+              shipped in real products like Budget IQ, Dump, and AyroChat.
+            </p>
+          </div>
+          <div class="service-card">
+            <div class="icon-wrap"><svg class="icon"><use href="#i-db" /></svg></div>
+            <h3>Cloud &amp; Databases</h3>
+            <p>
+              AWS (EC2, S3, RDS, IAM), Firebase hosting, and database design across
+              MongoDB, PostgreSQL, SQL Server, and Firestore.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Portfolio</span>
+          <h2>Live products &amp; <span class="accent">projects</span></h2>
+          <p>Real apps with real users — live on the Play Store and the web.</p>
+        </div>
+
+        <div class="filter-bar reveal">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="live">Live</button>
+          <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+          <button class="filter-btn" data-filter="web">Web Platforms</button>
+          <button class="filter-btn" data-filter="opensource">Open Source</button>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Budget IQ -->
+          <article class="project-card reveal" data-category="live mobile" data-tilt>
+            <span class="live-pill">LIVE</span>
+            <div class="project-cover">
+              <span class="big-letter">Budget IQ</span>
+              <span class="watermark">B</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">AI Expense Tracker · Play Store</span>
+              <h3>Budget IQ</h3>
+              <p>
+                AI-powered expense tracker — log expenses by text or voice, get smart
+                categorization, 50/30/20 budgeting, streaks, and multi-currency support.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>AI</span><span>Voice Input</span><span>Firebase</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="live"
+                  href="https://play.google.com/store/apps/details?id=com.budgetiq.ayroflow"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg class="icon"><use href="#i-play" /></svg> Play Store
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Dump -->
+          <article class="project-card reveal" data-category="live mobile" data-delay="1" data-tilt>
+            <span class="live-pill">LIVE</span>
+            <div class="project-cover">
+              <span class="big-letter">Dump</span>
+              <span class="watermark">D</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">AI Productivity · Play Store</span>
+              <h3>Dump — AI Todos &amp; Notes</h3>
+              <p>
+                Capture messy thoughts by voice or text and let AI sort them into
+                organized todos, notes, and reminders.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>AI Sorting</span><span>Voice</span><span>Reminders</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="live"
+                  href="https://play.google.com/store/apps/details?id=com.ayroflow.dump"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg class="icon"><use href="#i-play" /></svg> Play Store
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- CareCloud Family -->
+          <article class="project-card reveal" data-category="live mobile" data-delay="2" data-tilt>
+            <span class="live-pill">LIVE</span>
+            <div class="project-cover">
+              <span class="big-letter">CareCloud</span>
+              <span class="watermark">C</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">EdTech · Play Store</span>
+              <h3>CareCloud Family</h3>
+              <p>
+                School management companion app — admissions, scheduling, and daily
+                operations for families, built and maintained at CareCloud.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>REST APIs</span><span>Push Notifications</span>
+              </div>
+              <div class="project-links">
+                <a
+                  class="live"
+                  href="https://play.google.com/store/apps/details?id=com.carecloud.family"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <svg class="icon"><use href="#i-play" /></svg> Play Store
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- SecureDesk -->
+          <article class="project-card reveal" data-category="live web" data-tilt>
+            <span class="live-pill">LIVE</span>
+            <div class="project-cover">
+              <span class="big-letter">SecureDesk</span>
+              <span class="watermark">S</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Enterprise SaaS · Web</span>
+              <h3>SecureDesk AI</h3>
+              <p>
+                AI-assisted helpdesk and ticketing platform unifying email, web forms,
+                and AI chat into one ticket timeline with a dashboard-first UI.
+              </p>
+              <div class="project-stack">
+                <span>Next.js</span><span>AI Assistant</span><span>Ticketing</span>
+              </div>
+              <div class="project-links">
+                <a class="live" href="https://securedesk.ayroflow.com/" target="_blank" rel="noopener">
+                  <svg class="icon"><use href="#i-external" /></svg> Visit Site
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- AyroChat -->
+          <article class="project-card reveal" data-category="live web" data-delay="1" data-tilt>
+            <span class="live-pill">LIVE</span>
+            <div class="project-cover">
+              <span class="big-letter">AyroChat</span>
+              <span class="watermark">A</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Automation SaaS · Web</span>
+              <h3>AyroChat — WhatsApp Platform</h3>
+              <p>
+                WhatsApp lead automation and booking platform — QR-connected sessions,
+                AI replies, lead capture, voice notes, and human handover.
+              </p>
+              <div class="project-stack">
+                <span>Next.js</span><span>WhatsApp API</span><span>AI Replies</span>
+              </div>
+              <div class="project-links">
+                <a class="live" href="https://whatsapp.ayroflow.com/" target="_blank" rel="noopener">
+                  <svg class="icon"><use href="#i-external" /></svg> Visit Site
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Omni messenger -->
+          <article class="project-card reveal" data-category="live mobile" data-delay="2" data-tilt>
+            <span class="live-pill">LIVE</span>
+            <div class="project-cover">
+              <img src="./img/appstore.png" alt="Omni messenger with AI voice dubbing" />
+            </div>
+            <div class="project-body">
+              <span class="project-tag">AI Messaging · Web App</span>
+              <h3>Omni — AI Voice-Dubbed Messenger</h3>
+              <p>
+                Real-time messaging app with AI-powered voice dubbing and language
+                translation, built with Flutter and Firebase at Grayhat.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>Firebase</span><span>AI Dubbing</span>
+              </div>
+              <div class="project-links">
+                <a class="live" href="https://ominidubed.web.app/#/login-view" target="_blank" rel="noopener">
+                  <svg class="icon"><use href="#i-external" /></svg> Open App
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- E-commerce -->
+          <article class="project-card reveal" data-category="mobile opensource" data-tilt>
+            <div class="project-cover">
+              <img src="./img/ecom.png" alt="Multi-vendor e-commerce app" />
+            </div>
+            <div class="project-body">
+              <span class="project-tag">E-commerce · Open Source</span>
+              <h3>Multi-Vendor E-Commerce</h3>
+              <p>
+                Full multi-vendor marketplace app with vendor dashboards, product
+                management, cart, and order flows.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>Firebase</span><span>Multi-vendor</span>
+              </div>
+              <div class="project-links">
+                <a class="code" href="https://github.com/umerfaro/ECommeranceAPP" target="_blank" rel="noopener">
+                  <svg class="icon"><use href="#i-github" /></svg> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Smart Learn -->
+          <article class="project-card reveal" data-category="mobile" data-delay="1" data-tilt>
+            <div class="project-cover">
+              <span class="big-letter">Smart Learn</span>
+              <span class="watermark">SL</span>
+            </div>
+            <div class="project-body">
+              <span class="project-tag">EdTech · LMS</span>
+              <h3>Smart Learn — LMS App</h3>
+              <p>
+                Interactive learning platform where students enroll in subjects, watch
+                videos, listen to audio lessons, and attempt quizzes.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>Video/Audio</span><span>Quizzes</span>
+              </div>
+              <div class="project-links">
+                <a class="code" href="#contact">
+                  <svg class="icon"><use href="#i-mail" /></svg> Request Demo
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- COVID tracker -->
+          <article class="project-card reveal" data-category="mobile opensource" data-delay="2" data-tilt>
+            <div class="project-cover">
+              <img src="./img/covid.png" alt="COVID-19 tracker app" />
+            </div>
+            <div class="project-body">
+              <span class="project-tag">Health · Open Source</span>
+              <h3>COVID-19 Tracker</h3>
+              <p>
+                Live global and country-wise COVID-19 statistics with charts, built on
+                public REST APIs.
+              </p>
+              <div class="project-stack">
+                <span>Flutter</span><span>REST API</span><span>Charts</span>
+              </div>
+              <div class="project-links">
+                <a class="code" href="https://github.com/umerfaro/Flutter_Covid-19-Tracker-APP" target="_blank" rel="noopener">
+                  <svg class="icon"><use href="#i-github" /></svg> GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CREDENTIALS ===================== -->
+    <section id="credentials">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Credentials</span>
+          <h2>Education &amp; <span class="accent">certifications</span></h2>
+        </div>
+
+        <div class="creds-grid">
+          <div class="cred-col reveal">
+            <h3><svg class="icon"><use href="#i-book" /></svg> Education</h3>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-book" /></svg></div>
+              <div>
+                <h4>BS Software Engineering</h4>
+                <p>FAST NUCES, Islamabad · 2021 — 2025</p>
+              </div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-book" /></svg></div>
+              <div>
+                <h4>FSc Pre-Engineering</h4>
+                <p>Punjab College, Multan · 2019 — 2021</p>
+              </div>
+            </div>
+
+            <h3 style="margin-top: 34px">
+              <svg class="icon"><use href="#i-trend" /></svg> Highlights
+            </h3>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-play" /></svg></div>
+              <div>
+                <h4>3 Apps Live on Google Play</h4>
+                <p>Budget IQ, Dump, and CareCloud Family — built, shipped, and maintained in production.</p>
+              </div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-users" /></svg></div>
+              <div>
+                <h4>DevOps Mentor to 100+ Students</h4>
+                <p>16+ hands-on lab sessions on Docker, Kubernetes, and CI/CD at FAST-NUCES.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cred-col reveal" data-delay="1">
+            <h3><svg class="icon"><use href="#i-award" /></svg> Certifications</h3>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-cloud" /></svg></div>
+              <div>
+                <h4>Microservices and CI/CD Pipeline Builder</h4>
+                <p>AWS Academy Graduate — microservices architecture &amp; CI/CD pipelines on AWS.</p>
+              </div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-cloud" /></svg></div>
+              <div>
+                <h4>AWS Cloud Technical Essentials</h4>
+                <p>AWS Academy Graduate — EC2, S3, RDS, IAM, and secure cloud deployment.</p>
+              </div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-cloud" /></svg></div>
+              <div>
+                <h4>AWS Academy Cloud Foundations</h4>
+                <p>AWS Academy Graduate — core services, security, architecture, and pricing.</p>
+              </div>
+            </div>
+            <div class="cred-card">
+              <div class="cred-ico"><svg class="icon"><use href="#i-mobile" /></svg></div>
+              <div>
+                <h4>Flutter Essential Training: Build for Multiple Platforms</h4>
+                <p>LinkedIn Learning — cross-platform widgets, responsive layouts, state management.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Contact</span>
+          <h2>Let's build something <span class="accent">together</span></h2>
+          <p>Have an idea or a role in mind? My inbox is always open.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <h3>Get in touch</h3>
+            <p>
+              Whether it's a Flutter app, a full-stack platform, or an AI-powered
+              product — let's talk about how I can help.
+            </p>
+            <div class="info-line">
+              <div class="ico"><svg class="icon"><use href="#i-mail" /></svg></div>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:Muhammadufarooq.dev@gmail.com">Muhammadufarooq.dev@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-line">
+              <div class="ico"><svg class="icon"><use href="#i-phone" /></svg></div>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+923261467086">+92 326 1467086</a>
+              </div>
+            </div>
+            <div class="info-line">
+              <div class="ico"><svg class="icon"><use href="#i-pin" /></svg></div>
+              <div>
+                <strong>Location</strong>
+                <span class="val">Islamabad, Pakistan</span>
+              </div>
+            </div>
+            <div class="socials">
+              <a href="https://www.linkedin.com/in/muhammadumerfarooqofficial" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg class="icon"><use href="#i-linkedin" /></svg>
+              </a>
+              <a href="https://github.com/umerfaro" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg class="icon"><use href="#i-github" /></svg>
+              </a>
+              <a href="https://www.instagram.com/etherealumer" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg class="icon"><use href="#i-instagram" /></svg>
+              </a>
+              <a href="https://www.facebook.com/etherealumer" target="_blank" rel="noopener" aria-label="Facebook">
+                <svg class="icon"><use href="#i-facebook" /></svg>
+              </a>
+            </div>
+          </div>
+
+          <form
+            class="contact-form reveal"
+            data-delay="1"
+            action="https://formspree.io/f/mdknvnvz"
+            method="POST"
           >
-            Submit
-          </button>
-        </form>
-      </div>
-    </div>
-
-    
-    <!-- footer -->
-    <div class="w-full bg-gray-800">
-      <div class="container mx-auto py-5 flex items-center justify-between">
-        <div class="flex items-center gap-2">
-          <img class="" src="./img/newlogo.svg" alt="" />
+            <div class="form-row">
+              <label>
+                Name
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+              <label>
+                Email
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+            </div>
+            <label>
+              Subject
+              <input type="text" name="subject" placeholder="What's this about?" />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+            </label>
+            <button type="submit" class="btn btn-primary">
+              Send Message
+              <svg class="icon"><use href="#i-arrow-right" /></svg>
+            </button>
+          </form>
         </div>
-        <span class="hidden md:block font-medium text-white">© 2024 UmerFarooq. Copyright. MUF, Inc.</span
-        >
-        <div class="flex gap-5">
-          <a href="https://www.facebook.com/etherealumer?mibextid=LQQJ4d" target="_blank">
-            <img class="w-4 cursor-pointer" src="./img/facebook.png" alt="Facebook" />
-          </a>
-          <a href="https://www.instagram.com/etherealumer?igsh=MXAzeWR1bng0NXBrYw%3D%3D&utm_source=qr" target="_blank">
-            <img class="w-4 cursor-pointer" src="./img/instagram.png" alt="Instagram" />
-          </a>
-          <a href="https://twitter.com/" target="_blank">
-            <img class="w-4 cursor-pointer" src="./img/twitter.png" alt="Twitter" />
-          </a>
-          <a href="https://www.linkedin.com/in/muhammad-umer-farooq-84b206229?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
-            <img class="w-4 cursor-pointer" src="./img/linkedin.png" alt="LinkedIn" />
-          </a>
-        </div>
-        
       </div>
-    </div>
+    </section>
 
-    <script>
-      AOS.init();
-    </script>
-    <script src="./app.js"></script>
-    <script src="./autotyping.js"></script>
-</body>
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+      <div class="container">
+        <span>© <span id="year"></span> Muhammad Umer Farooq. All rights reserved.</span>
+        <div class="foot-links">
+          <a href="#home">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <button id="to-top" aria-label="Back to top">
+      <svg class="icon"><use href="#i-arrow-up" /></svg>
+    </button>
+
+    <script src="./js/main.js"></script>
+  </body>
 </html>
-
-
-
-
