@@ -126,6 +126,7 @@ let ghRepos = null;
       const num = document.getElementById("stat-gh-num");
       const label = document.getElementById("stat-gh-label");
       if (num && label) {
+        num.dataset.live = ghRepos;
         num.textContent = ghRepos;
         label.textContent = "Public GitHub Repos";
       }
@@ -719,6 +720,61 @@ let ghRepos = null;
   });
 })();
 
+// ---------- count-up stats ----------
+(function countUp() {
+  const stats = document.querySelectorAll(".stat h3");
+  if (!stats.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  function animate(el) {
+    const raw = el.textContent.trim();
+    const target = parseInt(raw, 10);
+    if (isNaN(target)) return;
+    const suffix = raw.replace(/[0-9]/g, "");
+    const start = performance.now();
+    const dur = 1300;
+    (function frame(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (t < 1) requestAnimationFrame(frame);
+      else if (el.dataset.live) el.textContent = el.dataset.live;
+    })(start);
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          animate(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+  stats.forEach((s) => io.observe(s));
+})();
+
+// ---------- timeline draw-on-scroll ----------
+(function timelineDraw() {
+  const tl = document.querySelector(".timeline");
+  if (!tl) return;
+  const line = document.createElement("div");
+  line.className = "timeline-progress";
+  tl.appendChild(line);
+
+  function update() {
+    const r = tl.getBoundingClientRect();
+    const mid = window.innerHeight * 0.55;
+    const progress = Math.min(Math.max((mid - r.top) / r.height, 0), 1);
+    line.style.height = progress * 100 + "%";
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+})();
+
 // ---------- live Islamabad clock ----------
 (function clock() {
   const el = document.getElementById("pk-time");
@@ -734,6 +790,13 @@ let ghRepos = null;
   tick();
   setInterval(tick, 30000);
 })();
+
+// ---------- service worker (PWA) ----------
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
 
 // ---------- footer year ----------
 document.getElementById("year").textContent = new Date().getFullYear();
