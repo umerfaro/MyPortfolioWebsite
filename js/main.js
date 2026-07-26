@@ -74,36 +74,55 @@
   tick();
 })();
 
-// ---------- typing effect ----------
-(function typing() {
-  const el = document.getElementById("typed");
-  if (!el) return;
-  const words = [
-    "Full Stack Software Engineer",
-    "Flutter App Developer",
-    "AI-Powered Product Builder",
-    "Next.js & Web Developer",
-    "DevOps & CI/CD Enthusiast",
+// ---------- hero terminal ----------
+(function terminal() {
+  const cmdEl = document.getElementById("t-cmd");
+  const outEl = document.getElementById("t-out");
+  if (!cmdEl || !outEl) return;
+
+  const sequence = [
+    {
+      cmd: "whoami",
+      out: '<span class="ok">➜</span> full-stack engineer — flutter · next.js · devops',
+    },
+    {
+      cmd: "flutter build apk --release",
+      out: '<span class="ok">✓</span> Built app-release.apk — live on Play Store',
+    },
+    {
+      cmd: "git push origin main",
+      out: '<span class="ok">✓</span> CI/CD pipeline green — deployed via GitHub Actions',
+    },
+    {
+      cmd: "ls ~/projects",
+      out: "budget-iq  dump  securedesk  ayrochat  carecloud",
+    },
   ];
-  let wi = 0, ci = 0, deleting = false;
 
-  function step() {
-    const word = words[wi];
-    ci += deleting ? -1 : 1;
-    el.textContent = word.slice(0, ci);
+  let si = 0;
 
-    let delay = deleting ? 45 : 85;
-    if (!deleting && ci === word.length) {
-      delay = 2000;
-      deleting = true;
-    } else if (deleting && ci === 0) {
-      deleting = false;
-      wi = (wi + 1) % words.length;
-      delay = 400;
-    }
-    setTimeout(step, delay);
+  function typeCmd(cmd, done) {
+    let i = 0;
+    (function tick() {
+      cmdEl.textContent = cmd.slice(0, ++i);
+      if (i < cmd.length) setTimeout(tick, 55 + Math.random() * 45);
+      else done();
+    })();
   }
-  step();
+
+  function run() {
+    const step = sequence[si];
+    cmdEl.textContent = "";
+    outEl.innerHTML = "";
+    typeCmd(step.cmd, () => {
+      setTimeout(() => {
+        outEl.innerHTML = step.out;
+        si = (si + 1) % sequence.length;
+        setTimeout(run, 2600);
+      }, 450);
+    });
+  }
+  run();
 })();
 
 // ---------- navbar ----------
@@ -113,9 +132,15 @@
   const mobileMenu = document.getElementById("mobile-menu");
   const toTop = document.getElementById("to-top");
 
+  const progress = document.getElementById("scroll-progress");
+
   window.addEventListener("scroll", () => {
     navbar.classList.toggle("scrolled", window.scrollY > 30);
     toTop.classList.toggle("show", window.scrollY > 600);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    if (progress && max > 0) {
+      progress.style.width = (window.scrollY / max) * 100 + "%";
+    }
   });
 
   hamburger.addEventListener("click", () => {

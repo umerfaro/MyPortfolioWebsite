@@ -51,6 +51,9 @@
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
 
+    <!-- scroll progress -->
+    <div id="scroll-progress"></div>
+
     <!-- ===================== NAVBAR ===================== -->
     <nav class="navbar" id="navbar">
       <div class="container">
@@ -100,15 +103,24 @@
             Hi, I'm Muhammad<br />
             <span class="accent">Umer Farooq</span>
           </h1>
-          <div class="typing-line">
-            <span id="typed"></span><span class="cursor"></span>
-          </div>
           <p class="hero-desc">
             I build production-ready mobile apps and modern web platforms — from
             AI-powered products live on the Play Store to enterprise helpdesk and
             automation systems. Flutter, Next.js, REST APIs, Firebase, and
             cloud-native CI/CD are my daily tools.
           </p>
+          <div class="terminal" aria-hidden="true">
+            <div class="terminal-bar">
+              <span class="t-dot t-red"></span>
+              <span class="t-dot t-yellow"></span>
+              <span class="t-dot t-green"></span>
+              <span class="terminal-title">umer@ayroflow — zsh</span>
+            </div>
+            <div class="terminal-body">
+              <div class="t-line"><span class="t-prompt">$</span><span id="t-cmd"></span><span class="t-cursor"></span></div>
+              <div class="t-output" id="t-out"></div>
+            </div>
+          </div>
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary">
               View Projects
@@ -166,7 +178,7 @@
     <section id="about">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">About Me</span>
+          <span class="eyebrow">// about-me</span>
           <h2>Better code, <span class="accent">better software</span></h2>
         </div>
 
@@ -235,7 +247,7 @@
     <section id="experience">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Career Path</span>
+          <span class="eyebrow">// experience</span>
           <h2>Work <span class="accent">experience</span></h2>
           <p>From internships to production engineering — the journey so far.</p>
         </div>
@@ -306,7 +318,7 @@
     <section id="services">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Services</span>
+          <span class="eyebrow">// services</span>
           <h2>What I <span class="accent">offer</span></h2>
           <p>End-to-end product engineering — from the first wireframe to automated store releases.</p>
         </div>
@@ -368,7 +380,7 @@
     <section id="projects">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Portfolio</span>
+          <span class="eyebrow">// projects</span>
           <h2>Live products &amp; <span class="accent">projects</span></h2>
           <p>Real apps with real users — live on the Play Store and the web.</p>
         </div>
@@ -626,7 +638,7 @@
     <section id="credentials">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Credentials</span>
+          <span class="eyebrow">// credentials</span>
           <h2>Education &amp; <span class="accent">certifications</span></h2>
         </div>
 
@@ -706,7 +718,7 @@
     <section id="contact">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">Contact</span>
+          <span class="eyebrow">// contact</span>
           <h2>Let's build something <span class="accent">together</span></h2>
           <p>Have an idea or a role in mind? My inbox is always open.</p>
         </div>
