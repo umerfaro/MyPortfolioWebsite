@@ -75,13 +75,16 @@
           <li><a href="#credentials">Credentials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a
-          class="nav-cta"
-          href="https://drive.google.com/file/d/16Rwf8ALO29oG6bFmB1NqAa50JJJeI74G/view?usp=sharing"
-          target="_blank"
-          rel="noopener"
-          >Download CV</a
-        >
+        <div class="nav-right">
+          <button class="kbd-hint" id="palette-open" aria-label="Open command palette">⌘K</button>
+          <a
+            class="nav-cta"
+            href="https://drive.google.com/file/d/16Rwf8ALO29oG6bFmB1NqAa50JJJeI74G/view?usp=sharing"
+            target="_blank"
+            rel="noopener"
+            >Download CV</a
+          >
+        </div>
         <button class="hamburger" id="hamburger" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
@@ -103,7 +106,10 @@
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-copy">
-          <span class="hero-badge"><span class="dot"></span> Available for new opportunities</span>
+          <div class="hero-badges">
+            <span class="hero-badge"><span class="dot"></span> Available for new opportunities</span>
+            <span class="hero-badge mono"><span id="pk-time">--:--</span> PKT · building <span class="accent">AyroChat</span></span>
+          </div>
           <h1>
             Hi, I'm Muhammad<br />
             <span class="accent">Umer Farooq</span>
@@ -865,6 +871,25 @@
     <button id="to-top" aria-label="Back to top">
       <svg class="icon"><use href="#i-arrow-up" /></svg>
     </button>
+
+    <!-- command palette -->
+    <div id="palette" class="palette" hidden>
+      <div class="palette-backdrop" id="palette-backdrop"></div>
+      <div class="palette-panel">
+        <div class="palette-input-row">
+          <span class="t-prompt">$</span>
+          <input
+            id="palette-input"
+            type="text"
+            placeholder="Search sections, projects, links…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <span class="palette-esc">esc</span>
+        </div>
+        <ul id="palette-list"></ul>
+      </div>
+    </div>
 
     <div id="cursor" aria-hidden="true"></div>
 

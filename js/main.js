@@ -215,6 +215,7 @@ let ghRepos = null;
     '<span class="ok">cv</span>        — download my CV',
     '<span class="ok">contact</span>   — jump to contact form',
     '<span class="ok">matrix</span>    — ???',
+    '<span class="ok">retro</span>     — CRT mode',
     '<span class="ok">clear</span>     — clear terminal',
   ].join("\n");
 
@@ -260,6 +261,11 @@ let ghRepos = null;
       case "matrix":
         if (window.__matrix) window.__matrix();
         return '<span class="ok">wake up, neo…</span>';
+      case "retro":
+        document.documentElement.classList.toggle("crt");
+        return document.documentElement.classList.contains("crt")
+          ? '<span class="ok">✓</span> CRT mode on — type retro again to exit'
+          : '<span class="ok">✓</span> back to the future';
       case "clear":
         outEl.innerHTML = "";
         return null;
@@ -397,7 +403,7 @@ let ghRepos = null;
   document.addEventListener("mouseover", (e) => {
     cur.classList.toggle(
       "on-link",
-      !!e.target.closest("a, button, input, textarea, label, .filter-btn, .terminal")
+      !!e.target.closest("a, button, input, textarea, label, .filter-btn, .terminal, .palette-item")
     );
   });
 
@@ -545,6 +551,188 @@ let ghRepos = null;
       });
     });
   });
+})();
+
+// ---------- command palette ----------
+(function palette() {
+  const root = document.getElementById("palette");
+  const input = document.getElementById("palette-input");
+  const list = document.getElementById("palette-list");
+  const openBtn = document.getElementById("palette-open");
+  const backdrop = document.getElementById("palette-backdrop");
+  if (!root || !input || !list) return;
+
+  const ITEMS = [
+    { label: "Go to Home", hint: "section", go: "#home" },
+    { label: "Go to About", hint: "section", go: "#about" },
+    { label: "Go to Experience", hint: "section", go: "#experience" },
+    { label: "Go to Services", hint: "section", go: "#services" },
+    { label: "Go to Projects", hint: "section", go: "#projects" },
+    { label: "Go to Credentials", hint: "section", go: "#credentials" },
+    { label: "Go to Contact", hint: "section", go: "#contact" },
+    { label: "Budget IQ — AI Expense Tracker", hint: "play store", url: "https://play.google.com/store/apps/details?id=com.budgetiq.ayroflow" },
+    { label: "Dump — AI Todos & Notes", hint: "play store", url: "https://play.google.com/store/apps/details?id=com.ayroflow.dump" },
+    { label: "CareCloud Family", hint: "play store", url: "https://play.google.com/store/apps/details?id=com.carecloud.family" },
+    { label: "SecureDesk AI", hint: "web", url: "https://securedesk.ayroflow.com/" },
+    { label: "AyroChat — WhatsApp Platform", hint: "web", url: "https://whatsapp.ayroflow.com/" },
+    { label: "Omni — AI Messenger", hint: "web app", url: "https://ominidubed.web.app/#/login-view" },
+    { label: "GitHub Profile", hint: "link", url: "https://github.com/umerfaro" },
+    { label: "LinkedIn Profile", hint: "link", url: "https://www.linkedin.com/in/muhammadumerfarooqofficial" },
+    { label: "Download CV", hint: "pdf", url: "https://drive.google.com/file/d/16Rwf8ALO29oG6bFmB1NqAa50JJJeI74G/view?usp=sharing" },
+    { label: "Email Me", hint: "mail", url: "mailto:Muhammadufarooq.dev@gmail.com" },
+  ];
+
+  let filtered = ITEMS;
+  let sel = 0;
+
+  function render() {
+    if (!filtered.length) {
+      list.innerHTML = '<li class="palette-empty">no results — try "projects"</li>';
+      return;
+    }
+    list.innerHTML = filtered
+      .map(
+        (it, i) =>
+          '<li class="palette-item' + (i === sel ? " sel" : "") + '" data-i="' + i + '">' +
+          "<span>" + it.label + "</span>" +
+          '<span class="hint">' + it.hint + "</span></li>"
+      )
+      .join("");
+  }
+
+  function filter() {
+    const q = input.value.trim().toLowerCase();
+    filtered = q
+      ? ITEMS.filter((it) => it.label.toLowerCase().includes(q))
+      : ITEMS;
+    sel = 0;
+    render();
+  }
+
+  function open() {
+    root.hidden = false;
+    input.value = "";
+    filter();
+    input.focus();
+  }
+
+  function close() {
+    root.hidden = true;
+    input.blur();
+  }
+
+  function run(it) {
+    close();
+    if (it.go) {
+      document.querySelector(it.go).scrollIntoView({ behavior: "smooth" });
+    } else if (it.url) {
+      window.open(it.url, "_blank", "noopener");
+    }
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      root.hidden ? open() : close();
+    } else if (e.key === "Escape" && !root.hidden) {
+      close();
+    }
+  });
+
+  input.addEventListener("input", filter);
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      sel = Math.min(sel + 1, filtered.length - 1);
+      render();
+      const el = list.querySelector(".sel");
+      if (el) el.scrollIntoView({ block: "nearest" });
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      sel = Math.max(sel - 1, 0);
+      render();
+      const el = list.querySelector(".sel");
+      if (el) el.scrollIntoView({ block: "nearest" });
+    } else if (e.key === "Enter" && filtered[sel]) {
+      run(filtered[sel]);
+    }
+  });
+
+  list.addEventListener("click", (e) => {
+    const li = e.target.closest(".palette-item");
+    if (li) run(filtered[+li.dataset.i]);
+  });
+
+  if (openBtn) openBtn.addEventListener("click", open);
+  if (backdrop) backdrop.addEventListener("click", close);
+  render();
+})();
+
+// ---------- konami code → CRT retro mode ----------
+(function konami() {
+  const SEQ = [
+    "arrowup", "arrowup", "arrowdown", "arrowdown",
+    "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a",
+  ];
+  let pos = 0;
+  document.addEventListener("keydown", (e) => {
+    const t = e.target.tagName;
+    if (t === "INPUT" || t === "TEXTAREA") return;
+    const key = e.key.toLowerCase();
+    pos = key === SEQ[pos] ? pos + 1 : key === SEQ[0] ? 1 : 0;
+    if (pos === SEQ.length) {
+      pos = 0;
+      document.documentElement.classList.toggle("crt");
+    }
+  });
+})();
+
+// ---------- spotlight hover on cards ----------
+(function spotlight() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  document
+    .querySelectorAll(".project-card, .service-card, .tl-card, .cred-card")
+    .forEach((card) => {
+      card.classList.add("spot");
+      card.addEventListener("mousemove", (e) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", e.clientX - r.left + "px");
+        card.style.setProperty("--my", e.clientY - r.top + "px");
+      });
+    });
+})();
+
+// ---------- magnetic buttons ----------
+(function magnetic() {
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+  document.querySelectorAll(".btn, .nav-cta, .kbd-hint").forEach((btn) => {
+    btn.addEventListener("mousemove", (e) => {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2);
+      const dy = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = "translate(" + dx * 0.12 + "px," + dy * 0.18 + "px)";
+    });
+    btn.addEventListener("mouseleave", () => {
+      btn.style.transform = "";
+    });
+  });
+})();
+
+// ---------- live Islamabad clock ----------
+(function clock() {
+  const el = document.getElementById("pk-time");
+  if (!el) return;
+  const fmt = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Asia/Karachi",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  function tick() {
+    el.textContent = fmt.format(new Date());
+  }
+  tick();
+  setInterval(tick, 30000);
 })();
 
 // ---------- footer year ----------
