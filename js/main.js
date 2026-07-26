@@ -2,6 +2,47 @@
    Muhammad Umer Farooq — Portfolio interactions
    ============================================================ */
 
+// ---------- boot preloader ----------
+(function boot() {
+  const pre = document.getElementById("preloader");
+  const box = document.getElementById("boot-lines");
+  if (!pre || !box) return;
+
+  const skip =
+    sessionStorage.getItem("booted") ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (skip) {
+    pre.classList.add("done");
+    setTimeout(() => pre.remove(), 100);
+    return;
+  }
+
+  const lines = [
+    '<span class="b-accent">$</span> <span class="b-cmd">./init umer-portfolio</span>',
+    '▸ loading modules ......... <span class="b-accent">done</span>',
+    '▸ fetching projects [budget-iq, dump, securedesk] ... <span class="b-accent">done</span>',
+    '▸ starting server ......... <span class="b-accent">ready in 0.4s</span>',
+    '<span class="b-accent">✓ welcome</span>',
+  ];
+
+  let i = 0;
+  (function next() {
+    const div = document.createElement("div");
+    div.innerHTML = lines[i];
+    box.appendChild(div);
+    if (++i < lines.length) {
+      setTimeout(next, 220 + Math.random() * 120);
+    } else {
+      sessionStorage.setItem("booted", "1");
+      setTimeout(() => {
+        pre.classList.add("done");
+        setTimeout(() => pre.remove(), 600);
+      }, 450);
+    }
+  })();
+})();
+
 // ---------- particle constellation background ----------
 (function particles() {
   const canvas = document.getElementById("bg-canvas");
