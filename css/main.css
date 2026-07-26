@@ -1029,6 +1029,11 @@ section {
   display: flex;
   flex-direction: column;
   gap: 34px;
+  min-width: 0;
+}
+
+.about-copy {
+  min-width: 0;
 }
 
 .about-photo {
@@ -1088,6 +1093,7 @@ section {
   white-space: pre;
   overflow-x: auto;
   flex: 1;
+  min-width: 0;
 }
 
 .code-lines div,
@@ -2232,7 +2238,13 @@ footer {
   }
 
   /* about */
-  .about-photo { max-width: 300px; }
+  .about-photo {
+    max-width: 300px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .code-window { font-size: 0.7rem; }
 
   .about-facts { grid-template-columns: 1fr; }
 
