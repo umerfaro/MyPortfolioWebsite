@@ -134,6 +134,66 @@ body::after {
   to { transform: translateX(-50%); }
 }
 
+/* matrix rain overlay */
+#matrix-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+#matrix-canvas.fade {
+  opacity: 0;
+}
+
+/* custom terminal cursor (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  label,
+  .filter-btn {
+    cursor: none;
+  }
+
+  #cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 20px;
+    background: var(--primary);
+    mix-blend-mode: difference;
+    pointer-events: none;
+    z-index: 998;
+    opacity: 0;
+    transition: width 0.2s, height 0.2s, border-radius 0.2s, background 0.2s, border 0.2s;
+    will-change: transform;
+  }
+
+  #cursor.visible {
+    opacity: 1;
+  }
+
+  #cursor.on-link {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid var(--primary);
+  }
+}
+
+@media not ((hover: hover) and (pointer: fine)) {
+  #cursor {
+    display: none;
+  }
+}
+
 /* scroll progress bar */
 #scroll-progress {
   position: fixed;
@@ -525,9 +585,41 @@ section {
   letter-spacing: 0.02em;
 }
 
+.terminal-hint {
+  margin-left: auto;
+  font-size: 0.66rem;
+  color: rgba(126, 211, 33, 0.7);
+  letter-spacing: 0.04em;
+  transition: opacity 0.3s;
+}
+
+.terminal.active .terminal-hint {
+  opacity: 0;
+}
+
+.terminal {
+  transition: border-color 0.3s;
+}
+
+.terminal.active {
+  border-color: rgba(126, 211, 33, 0.45);
+}
+
 .terminal-body {
   padding: 16px 18px 18px;
   min-height: 84px;
+  position: relative;
+}
+
+#t-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  border: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  width: 100%;
 }
 
 .t-line {
@@ -557,6 +649,10 @@ section {
   color: var(--muted);
   white-space: pre-wrap;
   min-height: 1.4em;
+  max-height: 9.8em;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .t-output .ok {
@@ -1582,6 +1678,8 @@ footer .foot-links a:hover {
   }
 
   .terminal-body { min-height: 96px; }
+
+  .terminal-hint { display: none; }
 
   .hero-desc { font-size: 0.95rem; }
 

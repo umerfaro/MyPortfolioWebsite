@@ -114,16 +114,25 @@
             automation systems. Flutter, Next.js, REST APIs, Firebase, and
             cloud-native CI/CD are my daily tools.
           </p>
-          <div class="terminal" aria-hidden="true">
+          <div class="terminal" id="terminal">
             <div class="terminal-bar">
               <span class="t-dot t-red"></span>
               <span class="t-dot t-yellow"></span>
               <span class="t-dot t-green"></span>
               <span class="terminal-title">umer@ayroflow — zsh</span>
+              <span class="terminal-hint" id="t-hint">click to type · try "help"</span>
             </div>
             <div class="terminal-body">
               <div class="t-line"><span class="t-prompt">$</span><span id="t-cmd"></span><span class="t-cursor"></span></div>
               <div class="t-output" id="t-out"></div>
+              <input
+                id="t-input"
+                type="text"
+                autocomplete="off"
+                autocapitalize="off"
+                spellcheck="false"
+                aria-label="Terminal input — type help for commands"
+              />
             </div>
           </div>
           <div class="hero-actions">
@@ -151,8 +160,8 @@
               <p>Apps on Play Store</p>
             </div>
             <div class="stat">
-              <h3>15+</h3>
-              <p>Projects Delivered</p>
+              <h3 id="stat-gh-num">15+</h3>
+              <p id="stat-gh-label">Projects Delivered</p>
             </div>
             <div class="stat">
               <h3>100+</h3>
@@ -856,6 +865,8 @@
     <button id="to-top" aria-label="Back to top">
       <svg class="icon"><use href="#i-arrow-up" /></svg>
     </button>
+
+    <div id="cursor" aria-hidden="true"></div>
 
     <script src="./js/main.js"></script>
   </body>
