@@ -425,13 +425,16 @@ let ghRepos = null;
   const toTop = document.getElementById("to-top");
 
   const progress = document.getElementById("scroll-progress");
+  const sbLn = document.getElementById("sb-ln");
 
   window.addEventListener("scroll", () => {
     navbar.classList.toggle("scrolled", window.scrollY > 30);
     toTop.classList.toggle("show", window.scrollY > 600);
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress && max > 0) {
-      progress.style.width = (window.scrollY / max) * 100 + "%";
+    if (max > 0) {
+      const p = window.scrollY / max;
+      if (progress) progress.style.width = p * 100 + "%";
+      if (sbLn) sbLn.textContent = 1 + Math.round(p * 812);
     }
   });
 
@@ -720,6 +723,82 @@ let ghRepos = null;
   });
 })();
 
+// ---------- VS Code skills window ----------
+(function codeWindow() {
+  const win = document.getElementById("code-window");
+  const gutter = document.getElementById("code-gutter");
+  const linesEl = document.getElementById("code-lines");
+  if (!win || !gutter || !linesEl) return;
+
+  const K = (s) => '<span class="tok-kw">' + s + "</span>";
+  const T = (s) => '<span class="tok-type">' + s + "</span>";
+  const S = (s) => '<span class="tok-str">' + s + "</span>";
+  const C = (s) => '<span class="tok-cmt">' + s + "</span>";
+  const F = (s) => '<span class="tok-fn">' + s + "</span>";
+
+  const LINES = [
+    K("class") + " " + T("UmerFarooq") + " " + K("extends") + " " + T("Engineer") + " {",
+    "  " + K("final") + " role  = " + S("'Full Stack Engineer'") + ";",
+    "  " + K("final") + " stack = [" + S("'Flutter'") + ", " + S("'Next.js'") + ", " + S("'AWS'") + "];",
+    "  " + K("final") + " live  = [" + S("'BudgetIQ'") + ", " + S("'Dump'") + ", " + S("'SecureDesk'") + "];",
+    "",
+    "  " + K("@override"),
+    "  " + T("Future") + "&lt;" + T("Product") + "&gt; " + F("build") + "(" + T("Idea") + " idea) " + K("async") + " {",
+    "    " + K("return await") + " idea." + F("design") + "()." + F("code") + "()." + F("ship") + "();",
+    "  } " + C("// build → test → deploy → repeat"),
+    "}",
+  ];
+
+  let started = false;
+
+  function stream() {
+    if (started) return;
+    started = true;
+    let i = 0;
+    (function next() {
+      if (i >= LINES.length) return;
+      const g = document.createElement("div");
+      g.textContent = i + 1;
+      gutter.appendChild(g);
+      const l = document.createElement("div");
+      l.innerHTML = LINES[i] || "&nbsp;";
+      linesEl.appendChild(l);
+      i++;
+      setTimeout(next, 150);
+    })();
+  }
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          stream();
+          io.unobserve(win);
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  io.observe(win);
+})();
+
+// ---------- contribution heatmap ----------
+(function heatmap() {
+  const grid = document.getElementById("heatmap");
+  if (!grid) return;
+  const cells = 52 * 7;
+  let html = "";
+  for (let i = 0; i < cells; i++) {
+    const r = Math.random();
+    // weighted toward activity, with quiet patches
+    const level = r < 0.18 ? 0 : r < 0.42 ? 1 : r < 0.68 ? 2 : r < 0.88 ? 3 : 4;
+    html += "<i data-l=\"" + level + "\"></i>";
+  }
+  grid.innerHTML = html;
+  const scroll = grid.parentElement;
+  if (scroll) scroll.scrollLeft = scroll.scrollWidth;
+})();
+
 // ---------- count-up stats ----------
 (function countUp() {
   const stats = document.querySelectorAll(".stat h3");
@@ -789,6 +868,24 @@ let ghRepos = null;
   }
   tick();
   setInterval(tick, 30000);
+})();
+
+// ---------- contact form: loading spinner + reset on back ----------
+(function contactForm() {
+  const form = document.querySelector(".contact-form");
+  if (!form) return;
+  const btn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener("submit", () => {
+    if (btn) btn.classList.add("loading");
+  });
+
+  // fires on first load, on back/forward (bfcache), and on session restore —
+  // clears stale values and un-sticks the spinner after returning from Formspree
+  window.addEventListener("pageshow", () => {
+    form.reset();
+    if (btn) btn.classList.remove("loading");
+  });
 })();
 
 // ---------- service worker (PWA) ----------

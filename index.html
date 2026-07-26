@@ -288,9 +288,24 @@
         </div>
 
         <div class="about-grid">
-          <div class="about-photo reveal">
-            <div class="frame">
-              <img src="./img/umer3.png" alt="Muhammad Umer Farooq" />
+          <div class="about-left reveal">
+            <div class="about-photo">
+              <div class="frame">
+                <img src="./img/umer3.png" alt="Muhammad Umer Farooq" />
+              </div>
+            </div>
+            <div class="code-window" id="code-window" aria-hidden="true">
+              <div class="code-tabs">
+                <span class="t-dot t-red"></span>
+                <span class="t-dot t-yellow"></span>
+                <span class="t-dot t-green"></span>
+                <span class="code-tab active">umer.dart</span>
+                <span class="code-tab">skills.yaml</span>
+              </div>
+              <div class="code-body">
+                <div class="code-gutter" id="code-gutter"></div>
+                <div class="code-lines" id="code-lines"></div>
+              </div>
             </div>
           </div>
 
@@ -345,6 +360,19 @@
             </div>
           </div>
         </div>
+
+        <!-- contribution heatmap -->
+        <div class="heatmap-block reveal" aria-hidden="true">
+          <div class="heatmap-head">$ git log --graph --author=umer</div>
+          <div class="heatmap-scroll">
+            <div id="heatmap"></div>
+          </div>
+          <div class="heatmap-legend">
+            <span>Less</span>
+            <i data-l="0"></i><i data-l="1"></i><i data-l="2"></i><i data-l="3"></i><i data-l="4"></i>
+            <span>More</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -359,6 +387,7 @@
 
         <div class="timeline">
           <div class="tl-item reveal">
+            <div class="tl-commit"><span class="c-star">*</span> <span class="c-hash">f7c3a91</span> feat(carecloud): promoted to junior software engineer</div>
             <div class="tl-card">
               <div class="tl-meta">
                 <h3>Junior Software Engineer</h3>
@@ -375,6 +404,7 @@
           </div>
 
           <div class="tl-item reveal" data-delay="1">
+            <div class="tl-commit"><span class="c-star">*</span> <span class="c-hash">4b8e2d0</span> docs(fast-nuces): mentored 100+ students in devops</div>
             <div class="tl-card">
               <div class="tl-meta">
                 <h3>Lab Demonstrator — Software Construction &amp; Development</h3>
@@ -389,6 +419,7 @@
           </div>
 
           <div class="tl-item reveal" data-delay="2">
+            <div class="tl-commit"><span class="c-star">*</span> <span class="c-hash">9d1c45e</span> feat(grayhat): shipped ai voice-dubbed messenger</div>
             <div class="tl-card">
               <div class="tl-meta">
                 <h3>Flutter Intern</h3>
@@ -403,6 +434,7 @@
           </div>
 
           <div class="tl-item reveal" data-delay="3">
+            <div class="tl-commit"><span class="c-star">*</span> <span class="c-hash">2a6f8b3</span> init(fiverr): started freelance career</div>
             <div class="tl-card">
               <div class="tl-meta">
                 <h3>Level 1 Freelancer</h3>
@@ -985,6 +1017,21 @@
           <span class="palette-esc">esc</span>
         </div>
         <ul id="palette-list"></ul>
+      </div>
+    </div>
+
+    <!-- editor status bar -->
+    <div class="status-bar" aria-hidden="true">
+      <div class="sb-left">
+        <span class="sb-item sb-branch">⎇ main <span class="sb-ok">✓</span></span>
+        <span class="sb-item sb-extra"><span class="sb-dot"></span> production</span>
+      </div>
+      <div class="sb-right">
+        <span class="sb-item">Ln <span id="sb-ln">1</span>, Col 7</span>
+        <span class="sb-item sb-extra">Spaces: 2</span>
+        <span class="sb-item sb-extra">UTF-8</span>
+        <span class="sb-item sb-extra">Dart</span>
+        <span class="sb-item sb-extra">⚡ Prettier</span>
       </div>
     </div>
 
